@@ -12,7 +12,8 @@ namespace DIExample.Controllers
 		private readonly IServiceScopeFactory _serviceScopeFactory;
 
 		// Constructor
-		public HomeController(ICitiesService citiesService1, ICitiesService citiesService2, ICitiesService citiesService3, IServiceScopeFactory serviceScopeFactory)
+		public HomeController(ICitiesService citiesService1, ICitiesService citiesService2,
+			ICitiesService citiesService3, IServiceScopeFactory serviceScopeFactory)
 		{
 			_citiesService1 = citiesService1;
 			_citiesService2 = citiesService2;
@@ -40,7 +41,7 @@ namespace DIExample.Controllers
 					scope.ServiceProvider.GetRequiredService<ICitiesService>();
 
 				// DB work
-				ViewBag.InstanceId_CitiesService_InScope = 
+				ViewBag.InstanceId_CitiesService_InScope =
 					citiesService.ServiceInstanceId;
 
 				// End of scope; It calls CitiesService.Dispose()

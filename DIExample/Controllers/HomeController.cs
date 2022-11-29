@@ -9,11 +9,12 @@ namespace DIExample.Controllers
 		private readonly ICitiesService _citiesService;
 
 		// Constructor
-		public HomeController()
+		public HomeController(ICitiesService citiesService)
 		{
 			// Create  object of CitiesService class
 			// new CitiesService();
-			_citiesService = null;
+			// _citiesService = null;
+			_citiesService = citiesService;
 		}
 
 		[Route("/")]

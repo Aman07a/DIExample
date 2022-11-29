@@ -6,21 +6,31 @@ namespace DIExample.Controllers
 {
 	public class HomeController : Controller
 	{
-		// private readonly ICitiesService _citiesService;
+		private readonly ICitiesService _citiesService1;
+		private readonly ICitiesService _citiesService2;
+		private readonly ICitiesService _citiesService3;
 
-		// // Constructor
-		// public HomeController(ICitiesService citiesService)
-		// {
-		// 	// Create  object of CitiesService class
-		// 	// new CitiesService();
-		// 	// _citiesService = null;
-		// 	_citiesService = citiesService;
-		// }
+		// Constructor
+		public HomeController(ICitiesService citiesService1, ICitiesService citiesService2, ICitiesService citiesService3)
+		{
+			_citiesService1 = citiesService1;
+			_citiesService2 = citiesService2;
+			_citiesService3 = citiesService3;
+		}
 
 		[Route("/")]
-		public IActionResult Index([FromServices]ICitiesService _citiesService)
+		public IActionResult Index()
 		{
-			List<string> cities = _citiesService.GetCities();
+			List<string> cities = _citiesService1.GetCities();
+			ViewBag.InstanceId_CitiesService_1 =
+				_citiesService1.ServiceInstanceId;
+
+			ViewBag.InstanceId_CitiesService_2 =
+				_citiesService2.ServiceInstanceId;
+
+			ViewBag.InstanceId_CitiesService_3 =
+				_citiesService3.ServiceInstanceId;
+
 			return View(cities);
 		}
 	}
